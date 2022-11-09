@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>简易计算器 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="简易计算器 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="简易计算器 只包括了加减乘除的运算 首先我们要从键盘获取数字和运算符，初始化 1234Scanner sc &#x3D; new Scanner(System.in);System.out.println(&quot;请输入首位数字&quot;);double newNum;newNum &#x3D; sc.nextDouble();  然后我们要想的，当我输入第一位数字和第二位数字并进行运算后，得到的是第一对的运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简易计算器">
+<meta property="og:url" content="http://example.com/2022/11/09/%E7%AE%80%E6%98%93%E8%AE%A1%E7%AE%97%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简易计算器 只包括了加减乘除的运算 首先我们要从键盘获取数字和运算符，初始化 1234Scanner sc &#x3D; new Scanner(System.in);System.out.println(&quot;请输入首位数字&quot;);double newNum;newNum &#x3D; sc.nextDouble();  然后我们要想的，当我输入第一位数字和第二位数字并进行运算后，得到的是第一对的运算">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-09T03:40:57.000Z">
+<meta property="article:modified_time" content="2022-11-09T04:34:34.808Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/user.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/user.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://liusr997.github.io"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2668120420@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2668120420&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(3)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_word_count" value="1.7k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://liusr997.github.io">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2022/11/09/%E7%AE%80%E6%98%93%E8%AE%A1%E7%AE%97%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简易计算器">简易计算器</span>
+            <span class="post-date" title="2022-11-09 11:40:57">2022/11/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/08/%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="articl">articl</span>
+            <span class="post-date" title="2022-11-08 21:10:25">2022/11/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/08/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2022-11-08 21:09:03">2022/11/08</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-简易计算器" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">简易计算器</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2022-11-09 12:34:34'>2022-11-09 11:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.6k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>简易计算器</strong></p>
+<p>只包括了加减乘除的运算</p>
+<p>首先我们要从键盘获取数字和运算符，初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">System.out.println(<span class="string">&quot;请输入首位数字&quot;</span>);</span><br><span class="line"><span class="type">double</span> newNum;</span><br><span class="line">newNum = sc.nextDouble();</span><br></pre></td></tr></table></figure>
+
+<p>然后我们要想的，当我输入第一位数字和第二位数字并进行运算后，得到的是第一对的运算结果 </p>
+<p>再次进行运算时，进行操作的数值为第二位数字和第一对的运算结果进行运算，以此类推，在进行第一次运算后，每当我们再次进行运算后。拿取的值都为上一次运算结果的第二位数字和上一次的运算结果</p>
+<p>所以，为了获取每一次的运算结果值，我们要在main函数的首部创建一个动态数组，用来存储数值</p>
+<p>为了获取动态数组的每一个索引，我们创建一个变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Double&gt; numArr = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>接下来获取键盘中的运算符,考虑到可能进行多次运算，我们设置一个循环，并定义退出条件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;按e退出运算&quot;</span>);</span><br><span class="line">    String cal;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;请输入运算符&quot;</span>);</span><br><span class="line">    cal = sc.next();</span><br><span class="line">    <span class="keyword">if</span>(cal.equals(<span class="string">&quot;e&quot;</span>))&#123;</span><br><span class="line">        System.exit(<span class="number">0</span>);</span><br><span class="line">   &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!cal.equals(<span class="string">&quot;+&quot;</span>) &amp;&amp; !cal.equals(<span class="string">&quot;-&quot;</span>) &amp;&amp; !cal.equals(<span class="string">&quot;*&quot;</span>) &amp;&amp;! cal.equals(<span class="string">&quot;/&quot;</span>))	&#123;</span><br><span class="line">     System.out.println(<span class="string">&quot;运算符输入有误，请重新输入&quot;</span>);   </span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取参加运算的第二位数字,获取完对索引进行增加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> oldNum;</span><br><span class="line">    System.out.println(<span class="string">&quot;请输入第二位数字&quot;</span>);</span><br><span class="line">    oldNum = sc.nexDouble();</span><br><span class="line">    count++;</span><br></pre></td></tr></table></figure>
+
+<p>运算方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">add</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> newNumber + oldNumber;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">sub</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> newNumber - oldNumber;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">mul</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> newNumber * oldNumber;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>除数不能为0,对此进行判断</p>
+<p>注意，如果我将分子输入了0，数值会返回0</p>
+<p>这样的话是不合法的运算，然而我们也会将count自增，从而导致动态数组的索引值发生错乱</p>
+<p>所以我们要返回第二位数字输入的位置，增加个判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">dev</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (oldNumber != <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> newNumber / oldNumber;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果返回值为0，count不进行自增，并提示重输，直到运算为合法的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">              System.out.println(<span class="string">&quot;请输入数字&quot;</span>);</span><br><span class="line">              oldNum = sc.nextDouble();</span><br><span class="line">              <span class="keyword">if</span> (dev(newNum, oldNum) != <span class="number">0</span>) &#123;</span><br><span class="line">                  count++;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  System.out.println(<span class="string">&quot;数值输入有误,请重新输入&quot;</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来判断符号并进行对结果的输出</p>
+<p>if()判断是否为第一次进行运算</p>
+<p>如果是将第一次的运算结果添加到动态数组中，方便之后运算的取值，此时的索引值为0</p>
+<p>如果不是，要获取上一次的运算结果，也就是numArr[0]</p>
+<p>由于我们每输入第二个数字后，count都会自增</p>
+<p>所以我们第一次输出运算结果时的索引值为1，第二次及之后索引值必然时大于等于2 的</p>
+<p>为了进行运算，要获取上一次结果的值，所以要使动态数组的索引值-2拿值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (cal) &#123;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">&quot;+&quot;</span> -&gt; &#123;</span><br><span class="line">                  <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                      numArr.add(add(newNum, oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + add(newNum, oldNum));</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      numArr.add(add(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + add(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">&quot;-&quot;</span> -&gt; &#123;</span><br><span class="line">                  <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                      numArr.add(sub(newNum, oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + sub(newNum, oldNum));</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      numArr.add(sub(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + sub(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">&quot;*&quot;</span> -&gt; &#123;</span><br><span class="line">                  <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                      numArr.add(mul(newNum, oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + mul(newNum, oldNum));</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      numArr.add(mul(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + mul(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">case</span> <span class="string">&quot;/&quot;</span> -&gt; &#123;</span><br><span class="line">                  <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                      numArr.add(dev(newNum, oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + dev(newNum, oldNum));</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      numArr.add(dev(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                      System.out.println(<span class="string">&quot;结果为&quot;</span> + dev(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能多次进行运算并输出结果，所以我们从输入符号的位置添加个循环</p>
+<p>最终程序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ArrayList&lt;Double&gt; numArr = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">double</span> newNum;</span><br><span class="line">        System.out.println(<span class="string">&quot;按e退出&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入数字&quot;</span>);</span><br><span class="line">        newNum = sc.nextDouble();</span><br><span class="line"><span class="comment">/////////////////////////多次进行运算</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            String cal;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;请输入符号&quot;</span>);</span><br><span class="line">                cal = sc.next();</span><br><span class="line">                <span class="keyword">if</span> (cal.equals(<span class="string">&quot;e&quot;</span>)) &#123;</span><br><span class="line">                    System.exit(<span class="number">0</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!cal.equals(<span class="string">&quot;+&quot;</span>) &amp;&amp; !cal.equals(<span class="string">&quot;-&quot;</span>) &amp;&amp; !cal.equals(<span class="string">&quot;*&quot;</span>) &amp;&amp; !cal.equals(<span class="string">&quot;/&quot;</span>)) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;符号输入有误，请重新输入&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">double</span> oldNum;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;请输入数字&quot;</span>);</span><br><span class="line">                oldNum = sc.nextDouble();</span><br><span class="line">                <span class="keyword">if</span> (dev(newNum, oldNum) != <span class="number">0</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;有误&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//////////////////运算符判断并输出结果</span></span><br><span class="line">            <span class="keyword">switch</span> (cal) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;+&quot;</span> -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                        numArr.add(add(newNum, oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + add(newNum, oldNum));</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        numArr.add(add(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + add(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;-&quot;</span> -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                        numArr.add(sub(newNum, oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + sub(newNum, oldNum));</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        numArr.add(sub(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + sub(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;*&quot;</span> -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                        numArr.add(mul(newNum, oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + mul(newNum, oldNum));</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        numArr.add(mul(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + mul(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;/&quot;</span> -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">                        numArr.add(dev(newNum, oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + dev(newNum, oldNum));</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        numArr.add(dev(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                        System.out.println(<span class="string">&quot;结果为&quot;</span> + dev(numArr.get(count - <span class="number">2</span>), oldNum));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//////////////////////运算方法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">add</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> newNumber + oldNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">sub</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> newNumber - oldNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">mul</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> newNumber * oldNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">dev</span><span class="params">(<span class="type">double</span> newNumber, <span class="type">double</span> oldNumber)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (oldNumber != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> newNumber / oldNumber;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果我们要将输入数字位显示异常判断，自行添加if</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'ec344339739a0e9dfdeb',
+            clientSecret: 'You need a client secret to authenticate as the application to the API.',
+            repo: 'https://liusr997.github.io',
+            owner: 'liusr997',
+            admin: ['liusr997'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 liusr
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
