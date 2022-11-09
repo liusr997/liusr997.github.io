@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>简易酒店入住系统 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="简易酒店入住系统 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="简易酒店入住系统基本功能包括：入住、预约、查询、退房  基本信息定义首先创建客户的基本属性类，取名为CustomerInfo 定义姓名、身份证号、手机号、来源地成员变量及构造方法 为方便操作均定义为String类型 public class CustomerInfo&amp;#123;     &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;定义成员变量       private String name;     private St">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简易酒店入住系统">
+<meta property="og:url" content="http://example.com/2022/11/09/%E7%AE%80%E6%98%93%E9%85%92%E5%BA%97%E5%85%A5%E4%BD%8F%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简易酒店入住系统基本功能包括：入住、预约、查询、退房  基本信息定义首先创建客户的基本属性类，取名为CustomerInfo 定义姓名、身份证号、手机号、来源地成员变量及构造方法 为方便操作均定义为String类型 public class CustomerInfo&amp;#123;     &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;定义成员变量       private String name;     private St">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-09T06:02:50.000Z">
+<meta property="article:modified_time" content="2022-11-09T07:25:22.012Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/user.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/user.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://liusr997.github.io"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2668120420@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2668120420&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(4)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="4">
+<input type="hidden" id="yelog_site_word_count" value="5.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://liusr997.github.io">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2022/11/09/%E7%AE%80%E6%98%93%E9%85%92%E5%BA%97%E5%85%A5%E4%BD%8F%E7%B3%BB%E7%BB%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简易酒店入住系统">简易酒店入住系统</span>
+            <span class="post-date" title="2022-11-09 14:02:50">2022/11/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/09/%E7%AE%80%E6%98%93%E8%AE%A1%E7%AE%97%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简易计算器">简易计算器</span>
+            <span class="post-date" title="2022-11-09 11:40:57">2022/11/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/08/%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="articl">articl</span>
+            <span class="post-date" title="2022-11-08 21:10:25">2022/11/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/08/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2022-11-08 21:09:03">2022/11/08</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-简易酒店入住系统" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">简易酒店入住系统</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2022-11-09 15:25:22'>2022-11-09 14:02</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:3.6k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E9%85%92%E5%BA%97%E5%85%A5%E4%BD%8F%E7%B3%BB%E7%BB%9F"><span class="toc-text">简易酒店入住系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E5%AE%9A%E4%B9%89"><span class="toc-text">基本信息定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C"><span class="toc-text">提示用户操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E7%BA%A6%E6%93%8D%E4%BD%9C"><span class="toc-text">预约操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%A2%84%E7%BA%A6%E7%A0%81"><span class="toc-text">生成预约码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E4%BD%8F%E6%93%8D%E4%BD%9C"><span class="toc-text">入住操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#case-%E2%80%9C1%E2%80%9D"><span class="toc-text">case “1”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case-%E2%80%9C2%E2%80%9D"><span class="toc-text">case “2”</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%AE%A2%E6%88%BF%E7%8A%B6%E6%80%81%E6%93%8D%E4%BD%9C"><span class="toc-text">查询客房状态操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E6%88%BF%E6%93%8D%E4%BD%9C"><span class="toc-text">退房操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BA%8F"><span class="toc-text">完整程序</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简易酒店入住系统"><a href="#简易酒店入住系统" class="headerlink" title="简易酒店入住系统"></a>简易酒店入住系统</h2><p>基本功能包括：入住、预约、查询、退房</p>
+<hr>
+<h3 id="基本信息定义"><a href="#基本信息定义" class="headerlink" title="基本信息定义"></a>基本信息定义</h3><p>首先创建客户的基本属性类，取名为CustomerInfo</p>
+<p>定义姓名、身份证号、手机号、来源地成员变量及构造方法</p>
+<p>为方便操作均定义为String类型</p>
+<pre><code class="java">public class CustomerInfo&#123;
+    ////////定义成员变量
+      private String name;
+    private String phoneNumber;
+    private String idCard;
+    private String location;
+    
+    ////////构造方法
+     public CustomerInfo() &#123;
+    &#125;
+
+    public CustomerInfo(String name, String phoneNumber, String idCard, String location) 	 &#123;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.idCard = idCard;
+        this.location = location;
+    &#125;
+    
+    ////////Getter、Setter
+       public String getName() &#123;
+        return name;
+    &#125;
+
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+ 
+    public String getPhoneNumber() &#123;
+        return phoneNumber;
+    &#125;
+
+  
+    public void setPhoneNumber(String phoneNumber) &#123;
+        this.phoneNumber = phoneNumber;
+    &#125;
+
+
+    public String getIdCard() &#123;
+        return idCard;
+    &#125;
+
+   
+    public void setIdCard(String idCard) &#123;
+        this.idCard = idCard;
+    &#125;
+
+    
+    public String getLocation() &#123;
+        return location;
+    &#125;
+
+    
+    public void setLocation(String location) &#123;
+        this.location = location;
+    &#125;
+&#125;
+</code></pre>
+<p>创建主类，命名为ManagementSystem</p>
+<p>由于房间数量固定，定义两个数组，展示房间信息和存储预约码</p>
+<h3 id="提示用户操作"><a href="#提示用户操作" class="headerlink" title="提示用户操作"></a>提示用户操作</h3><pre><code class="java">public static void main(String[] args)&#123;
+    CustomerInfo[] roomNumber = new CustomerInfo[9];
+    String[] numberArr = new String[9];
+    
+    while (true) &#123;
+            Scanner sc = new Scanner(System.in);
+            System.out.println(&quot;-----------------------------------------------------&quot;);
+            System.out.println(&quot;请输入您要进行的操作&quot;);
+            System.out.println(&quot;1.入住----2.预约----3.查询客房状态----4.退房----5.退出&quot;);
+            System.out.println(&quot;-----------------------------------------------------&quot;);
+            String index = sc.next();
+            switch (index) &#123;
+                case &quot;1&quot; -&gt; &#123;...&#125;
+                case &quot;2&quot; -&gt; &#123;...&#125;
+                case &quot;3&quot; -&gt; &#123;...&#125;
+                case &quot;4&quot; -&gt; &#123;...&#125;
+                case &quot;5&quot; -&gt; &#123;...&#125;
+                    System.exit(0);
+                &#125;
+                default -&gt; &#123;
+                    System.out.println(&quot;编号输入有误，请重新输入&quot;);
+                &#125;
+            &#125;
+        &#125;
+    
+&#125;
+</code></pre>
+<h3 id="预约操作"><a href="#预约操作" class="headerlink" title="预约操作"></a>预约操作</h3><p>定义一个方法，传入两个分别表示客房状态和预约码的形参</p>
+<p>创建一个CustomerInfo的对象，用于占位</p>
+<pre><code class="java">public static void oppointment(CustomerInfo[] room, String[] numberArr)&#123;
+     CustomerInfo cuinfo = new CustomerInfo();
+     Scanner sc = new Scanner(System.in);
+    
+    ////////判断是否存在空闲的房间并展示
+     for (int i = 0; i &lt; room.length; i++) &#123;
+            if (room[i] == null) &#123;
+                System.out.print(&quot;&#123;&quot; + (i + 1) + &quot;号&#125;&quot;);
+            &#125;
+     &#125;
+    System.out.println();
+    System.out.println(&quot;请选择您要预定的房间&quot;);
+    int op = sc.nextInt();
+    
+    ////////对输入值进行验证，并占位
+    if (op &gt; 0 &amp;&amp; op &lt;= room.length) &#123;
+            cuinfo.setName(&quot;admin&quot;);
+            cuinfo.setIdCard(&quot;000&quot;);
+            cuinfo.setPhoneNumber(&quot;000&quot;);
+            cuinfo.setLocation(&quot;china&quot;);
+            room[op - 1] = cuinfo;
+            System.out.println(&quot;预约成功&quot;);
+        
+        ////////回调oppointmentNumber
+        
+    &#125; else &#123;
+            System.out.println(&quot;房间号输入有误，预约失败&quot;);
+    &#125;
+    
+&#125;
+</code></pre>
+<h4 id="生成预约码"><a href="#生成预约码" class="headerlink" title="生成预约码"></a>生成预约码</h4><p>因为与预约系统绑定，所以创建一个int类型的形参，用于显示预定的房间号并返回调用</p>
+<pre><code class="java"> public static void oppointmentNumber(CustomerInfo[] room, int num, String[] numberArr) &#123;
+          
+         ////////生成一个由五位数字随机组成的预约码（范围0-9）
+        Random r = new Random();
+        StringBuilder key = new StringBuilder();
+        for (int i = 0; i &lt; 5; i++) &#123;
+            int index = r.nextInt(10);
+            key.append(index);
+        &#125;
+        System.out.println(&quot;您的预约码为&quot; + key + &quot;房间号为&quot; + (num + 1) + &quot;号&quot;);
+     
+       ////////将生成的预约码存储到数组
+        numberArr[num] = key.toString();
+    &#125;
+</code></pre>
+<p>回到oppointment方法</p>
+<p>调用oppointmentNumber,输出预约码和房间号，以便main函数调用</p>
+<pre><code class="java"> ////////添加到初始化用户信息代码段后边
+ oppointmentNumber(room, (op - 1), numberArr);
+</code></pre>
+<h3 id="入住操作"><a href="#入住操作" class="headerlink" title="入住操作"></a>入住操作</h3><p>定义check方法，传入两个分别表示客房状态和预约码的形参</p>
+<p>首先判断是否预约</p>
+<pre><code class="java"> public static void check(CustomerInfo[] room, String[] numberArr)&#123;
+      Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;是否预约了房间？1.已经预约----2.未预约&quot;);
+        int i = sc.nextInt();
+     
+     witch(i)&#123;
+         case &quot;1&quot; -&gt;&#123;...&#125;
+         case &quot;2&quot; -&gt;&#123;...&#125;
+         default -&gt;&#123;
+             System.out.println(&quot;编号输入有误，请重试&quot;);
+         &#125;
+     &#125;     
+ &#125;
+</code></pre>
+<h4 id="case-“1”"><a href="#case-“1”" class="headerlink" title="case “1”"></a>case “1”</h4><p>判断预约码是否存在</p>
+<p>如果存在请用户重新更正自己的信息</p>
+<p>不存在则提示</p>
+<p>定义一个方法，获取用户预定的房间号</p>
+<pre><code class="java">     System.out.println(&quot;请输入您预约的房间号&quot;);
+     String code = sc.next();
+    
+     ////////获取房间号
+     int roomCode = roomCode(numberArr, code);
+     ////////判断预约码
+     boolean flag = isOppointment(numberArr, code);
+
+         if (flag) &#123;
+                    System.out.println(&quot;您已经预约,您的房间为&quot; + roomCode + &quot;号房&quot;);
+                    System.out.println(&quot;请输入您的姓名&quot;);
+                    String name = sc.next();
+            
+                    ////////返回的数值从0开始，由于不存在0号房间，自动减一
+                    room[roomCode - 1].setName(name);
+
+                while (true) &#123;
+                        System.out.println(&quot;请输入您的手机号&quot;);
+                        String phoneNumber = sc.next();
+                    
+                        ////////判断手机号是否正确
+                        boolean rightPhoneNumber = rightPhoneNumber(phoneNumber);
+                        if (rightPhoneNumber) &#123;
+                            room[roomCode - 1].setPhoneNumber(phoneNumber);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;手机号输入有误&quot;);
+                        &#125;
+                &#125;
+
+                while (true) &#123;
+                        System.out.println(&quot;请输入您的身份证号&quot;);
+                        String idCard = sc.next();
+                    
+                        ////////判断身份证号是否合法
+                        boolean rightIdCard = rightIdCard(idCard);
+                        if (rightIdCard) &#123;
+                            room[roomCode - 1].setIdCard(idCard);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;身份证号输入有误&quot;);
+                        &#125;
+                &#125;
+                    System.out.println(&quot;请输入您的来源地&quot;);
+                    String from = sc.next();
+                    room[roomCode - 1].setLocation(from);
+
+                    System.out.println(&quot;您的信息更新成功，请愉快入住:)&quot;);            
+        &#125; 
+        else &#123;
+             System.out.println(&quot;您未预约&quot;);
+        &#125;
+</code></pre>
+<p>&#x3D;&#x3D;注意&#x3D;&#x3D;</p>
+<p>由于用户可能选择任意房间号</p>
+<p>将其依次对比判断时应添加非空判断，否则程序会报错</p>
+<pre><code class="java"> //判断用户是否预约
+ public static boolean isOppointment(String[] numberArr, String key) &#123;
+        for (int i = 0; i &lt; numberArr.length; i++) &#123;
+            if (numberArr[i] != null) &#123;
+                if (numberArr[i].equals(key)) &#123;
+                    return true;
+                &#125;
+            &#125;
+        &#125;
+        return false;
+ &#125;
+</code></pre>
+<pre><code class="java">   //返回用户预定的房间号
+    public static int roomCode(String[] Number, String code) &#123;
+        for (int i = 0; i &lt; Number.length; i++) &#123;
+            if (Number[i] != null) &#123;
+                if (Number[i].equals(code)) &#123;
+                    return (i + 1);
+                &#125;
+            &#125;
+        &#125;
+        return -1;
+    &#125;
+</code></pre>
+<p>判断手机号与身份证号是否合法</p>
+<pre><code class="java">    ////////验证手机号
+    public static boolean rightPhoneNumber(String number) &#123;
+        for (int i = 0; i &lt; number.length(); i++) &#123;
+            char c = number.charAt(i);
+            if (c &gt;= &#39;a&#39; &amp;&amp; c &lt;= &#39;z&#39; || c &gt;= &#39;A&#39; &amp;&amp; c &lt;= &#39;Z&#39; || number.length() != 11 || number.charAt(0) != &#39;1&#39;) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+</code></pre>
+<pre><code class="java">    ////////验证身份证号
+    public static boolean rightIdCard(String idcard) &#123;
+        for (int i = 0; i &lt; idcard.length() - 1; i++) &#123;
+            char c = idcard.charAt(i);
+            char last = idcard.charAt(idcard.length() - 1);
+            boolean flag = last == &#39;x&#39; || last &gt;= &#39;0&#39; &amp;&amp; last &lt;= &#39;9&#39;;
+            if (c &gt;= &#39;a&#39; &amp;&amp; c &lt;= &#39;z&#39; || c &gt;= &#39;A&#39; &amp;&amp; c &lt;= &#39;Z&#39; || idcard.length() != 18 || !flag) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+</code></pre>
+<h4 id="case-“2”"><a href="#case-“2”" class="headerlink" title="case “2”"></a>case “2”</h4><p>&#x3D;&#x3D;注意&#x3D;&#x3D;，case1是更新用户信息，case2是录入用户的信息，因此需重新创建对象</p>
+<pre><code class="java">        case 2 -&gt; &#123;
+                CustomerInfo cuinfo = new CustomerInfo();
+            
+                ////////获取空的房间位，入住默认从第一间依次向后
+                int index = useable(room);
+                System.out.println(&quot;第&quot; + (index + 1) + &quot;房间为空位&quot;);
+                if (index &gt;= 0) &#123;
+                    sc = new Scanner(System.in);
+                    System.out.println(&quot;请输入您的姓名&quot;);
+                    String name = sc.next();
+                    cuinfo.setName(name);
+
+                    while (true) &#123;
+                        System.out.println(&quot;请输入您的手机号&quot;);
+                        String phoneNumber = sc.next();
+                        boolean flag = rightPhoneNumber(phoneNumber);
+                        if (flag) &#123;
+                            cuinfo.setPhoneNumber(phoneNumber);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;手机号输入有误&quot;);
+                        &#125;
+                    &#125;
+
+                    while (true) &#123;
+                        System.out.println(&quot;请输入您的身份证号&quot;);
+                        String idCard = sc.next();
+                        boolean flag = rightIdCard(idCard);
+                        if (flag) &#123;
+                            cuinfo.setIdCard(idCard);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;身份证号输入有误&quot;);
+                        &#125;
+                    &#125;
+
+                    System.out.println(&quot;请输入您的来源地&quot;);
+                    String from = sc.next();
+                    cuinfo.setLocation(from);
+
+                    ////////用户登入信息添加到数组
+                    room[index] = cuinfo;
+                    System.out.println(&quot;用户登记添加成功&quot;);
+
+
+                &#125; else &#123;
+                    System.out.println(&quot;当前已无空闲房间&quot;);
+                &#125;
+            &#125;
+</code></pre>
+<p>获取空闲的房间数量</p>
+<pre><code class="java"> public static int useable(CustomerInfo[] room) &#123;
+        for (int i = 0; i &lt; room.length; i++) &#123;
+            if (room[i] == null) &#123;
+                System.out.println(&quot;当前存在&quot; + (9 - i) + &quot;间房间&quot;);
+                return i;
+            &#125;
+        &#125;
+        return -1;
+ &#125;
+</code></pre>
+<h3 id="查询客房状态操作"><a href="#查询客房状态操作" class="headerlink" title="查询客房状态操作"></a>查询客房状态操作</h3><pre><code class="java">public static void show(CustomerInfo[] rooms) &#123;
+        for (int i = 0; i &lt; rooms.length; i++) &#123;
+            if (rooms[i] != null) &#123;
+                String name = rooms[i].getName();
+                String phoneNumber = rooms[i].getPhoneNumber();
+                String id = rooms[i].getIdCard();
+                String from = rooms[i].getLocation();
+                System.out.println(&quot;当前&quot; + (i + 1) + &quot;号房间存在客户：&quot;);
+                System.out.println(&quot;姓名:&quot; + name + &quot;\t手机号:&quot; + phoneNumber + &quot;\t身份证号:&quot; + id + &quot;\t来源地:&quot; + from);
+            &#125; else &#123;
+                System.out.println(&quot;当前&quot; + (i + 1) + &quot;房间为空&quot;);
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="退房操作"><a href="#退房操作" class="headerlink" title="退房操作"></a>退房操作</h3><pre><code class="java"> public static void outRoom(CustomerInfo[] room) &#123;
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入您要退的房间&quot;);
+        int roomcode = sc.nextInt();
+        if (roomcode &gt; 0 &amp;&amp; roomcode &lt;= 9) &#123;
+            if (room[roomcode - 1] != null) &#123;
+                room[roomcode - 1] = null;
+                System.out.println(&quot;您已经成功退房:)&quot;);
+            &#125; else &#123;
+                System.out.println(&quot;您输入的房间号未有人居住或预约&quot;);
+            &#125;
+        &#125; else &#123;
+            System.out.println(&quot;您输入的房间号有错误&quot;);
+        &#125;
+    &#125;
+</code></pre>
+<p>将四个基本操作回调的main函数中</p>
+<pre><code class="java">         switch (index) &#123;
+                case &quot;1&quot; -&gt; &#123;
+                    check(roomNumber, numberArr);
+                &#125;
+                case &quot;2&quot; -&gt; &#123;
+                    oppointment(roomNumber, numberArr);
+                &#125;
+                case &quot;3&quot; -&gt; &#123;
+                    show(roomNumber);
+                &#125;
+                case &quot;4&quot; -&gt; &#123;
+                    outRoom(roomNumber);
+                &#125;
+                case &quot;5&quot; -&gt; &#123;
+                    System.exit(0);
+                &#125;
+                default -&gt; &#123;
+                    System.out.println(&quot;编号输入有误，请重新输入&quot;);
+                &#125;
+            &#125;
+</code></pre>
+<h3 id="完整程序"><a href="#完整程序" class="headerlink" title="完整程序"></a>完整程序</h3><p>基本信息在同包名下单独创建一个类</p>
+<pre><code class="java">public class ManagementSystem &#123;
+
+    public static void main(String[] args) &#123;
+        CustomerInfo[] roomNumber = new CustomerInfo[9];
+        String[] numberArr = new String[9];
+        while (true) &#123;
+            Scanner sc = new Scanner(System.in);
+            System.out.println(&quot;-----------------------------------------------------&quot;);
+            System.out.println(&quot;请输入您要进行的操作&quot;);
+            System.out.println(&quot;1.入住----2.预约----3.查询客房状态----4.退房----5.退出&quot;);
+            System.out.println(&quot;-----------------------------------------------------&quot;);
+            String index = sc.next();
+            switch (index) &#123;
+                case &quot;1&quot; -&gt; &#123;
+                    check(roomNumber, numberArr);
+                &#125;
+                case &quot;2&quot; -&gt; &#123;
+                    oppointment(roomNumber, numberArr);
+                &#125;
+                case &quot;3&quot; -&gt; &#123;
+                    show(roomNumber);
+                &#125;
+                case &quot;4&quot; -&gt; &#123;
+                    outRoom(roomNumber);
+                &#125;
+                case &quot;5&quot; -&gt; &#123;
+                    System.exit(0);
+                &#125;
+                default -&gt; &#123;
+                    System.out.println(&quot;编号输入有误，请重新输入&quot;);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+
+    public static void check(CustomerInfo[] room, String[] numberArr) &#123;
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;是否预约了房间？1.已经预约----2.未预约&quot;);
+        int i = sc.nextInt();
+
+        switch (i) &#123;
+            case 1 -&gt; &#123;
+                System.out.println(&quot;请输入您预约的房间号&quot;);
+                String code = sc.next();
+                int roomCode = roomCode(numberArr, code);
+                boolean flag = isOppointment(numberArr, code);
+                if (flag) &#123;
+                    System.out.println(&quot;您已经预约,您的房间为&quot; + roomCode + &quot;号房&quot;);
+                    System.out.println(&quot;请输入您的姓名&quot;);
+                    String name = sc.next();
+                    room[roomCode - 1].setName(name);
+
+                    while (true) &#123;
+                        System.out.println(&quot;请输入您的手机号&quot;);
+                        String phoneNumber = sc.next();
+                        boolean rightPhoneNumber = rightPhoneNumber(phoneNumber);
+                        if (rightPhoneNumber) &#123;
+                            room[roomCode - 1].setPhoneNumber(phoneNumber);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;手机号输入有误&quot;);
+                        &#125;
+                    &#125;
+
+                    while (true) &#123;
+                        System.out.println(&quot;请输入您的身份证号&quot;);
+                        String idCard = sc.next();
+                        boolean rightIdCard = rightIdCard(idCard);
+                        if (rightIdCard) &#123;
+                            room[roomCode - 1].setIdCard(idCard);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;身份证号输入有误&quot;);
+                        &#125;
+                    &#125;
+
+                    System.out.println(&quot;请输入您的来源地&quot;);
+                    String from = sc.next();
+                    room[roomCode - 1].setLocation(from);
+
+                    System.out.println(&quot;您的信息更新成功，请愉快入住:)&quot;);
+
+
+                &#125; else &#123;
+                    System.out.println(&quot;您未预约&quot;);
+                &#125;
+
+
+            &#125;
+            case 2 -&gt; &#123;
+                CustomerInfo cuinfo = new CustomerInfo();
+                int index = useable(room);
+                System.out.println(&quot;第&quot; + (index + 1) + &quot;房间为空位&quot;);
+                if (index &gt;= 0) &#123;
+                    sc = new Scanner(System.in);
+                    System.out.println(&quot;请输入您的姓名&quot;);
+                    String name = sc.next();
+                    cuinfo.setName(name);
+
+                    while (true) &#123;
+                        System.out.println(&quot;请输入您的手机号&quot;);
+                        String phoneNumber = sc.next();
+                        boolean flag = rightPhoneNumber(phoneNumber);
+                        if (flag) &#123;
+                            cuinfo.setPhoneNumber(phoneNumber);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;手机号输入有误&quot;);
+                        &#125;
+                    &#125;
+
+                    while (true) &#123;
+                        System.out.println(&quot;请输入您的身份证号&quot;);
+                        String idCard = sc.next();
+                        boolean flag = rightIdCard(idCard);
+                        if (flag) &#123;
+                            cuinfo.setIdCard(idCard);
+                            break;
+                        &#125; else &#123;
+                            System.out.println(&quot;身份证号输入有误&quot;);
+                        &#125;
+                    &#125;
+
+                    System.out.println(&quot;请输入您的来源地&quot;);
+                    String from = sc.next();
+                    cuinfo.setLocation(from);
+
+                    room[index] = cuinfo;
+                    System.out.println(&quot;用户登记添加成功&quot;);
+
+
+                &#125; else &#123;
+                    System.out.println(&quot;当前已无空闲房间&quot;);
+                &#125;
+            &#125;
+            default -&gt; &#123;
+                System.out.println(&quot;编号输入有误，请重试&quot;);
+            &#125;
+        &#125;
+    &#125;
+
+    public static int useable(CustomerInfo[] room) &#123;
+        for (int i = 0; i &lt; room.length; i++) &#123;
+            if (room[i] == null) &#123;
+                System.out.println(&quot;当前存在&quot; + (9 - i) + &quot;间房间&quot;);
+                return i;
+            &#125;
+        &#125;
+        return -1;
+    &#125;
+
+    public static boolean rightPhoneNumber(String number) &#123;
+        for (int i = 0; i &lt; number.length(); i++) &#123;
+            char c = number.charAt(i);
+            if (c &gt;= &#39;a&#39; &amp;&amp; c &lt;= &#39;z&#39; || c &gt;= &#39;A&#39; &amp;&amp; c &lt;= &#39;Z&#39; || number.length() != 11 || number.charAt(0) != &#39;1&#39;) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+
+    public static boolean rightIdCard(String idcard) &#123;
+        for (int i = 0; i &lt; idcard.length() - 1; i++) &#123;
+            char c = idcard.charAt(i);
+            char last = idcard.charAt(idcard.length() - 1);
+            boolean flag = last == &#39;x&#39; || last &gt;= &#39;0&#39; &amp;&amp; last &lt;= &#39;9&#39;;
+            if (c &gt;= &#39;a&#39; &amp;&amp; c &lt;= &#39;z&#39; || c &gt;= &#39;A&#39; &amp;&amp; c &lt;= &#39;Z&#39; || idcard.length() != 18 || 	!flag) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+
+    public static void oppointment(CustomerInfo[] room, String[] numberArr) &#123;
+        CustomerInfo cuinfo = new CustomerInfo();
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;当前为空闲的房间有&quot;);
+        for (int i = 0; i &lt; room.length; i++) &#123;
+            if (room[i] == null) &#123;
+                System.out.print(&quot;&#123;&quot; + (i + 1) + &quot;号&#125;&quot;);
+            &#125;
+        &#125;
+        System.out.println();
+        System.out.println(&quot;请输入您要预约的房间&quot;);
+        int op = sc.nextInt();
+        if (op &gt; 0 &amp;&amp; op &lt;= room.length) &#123;
+            cuinfo.setName(&quot;admin&quot;);
+            cuinfo.setIdCard(&quot;000&quot;);
+            cuinfo.setPhoneNumber(&quot;000&quot;);
+            cuinfo.setLocation(&quot;china&quot;);
+            room[op - 1] = cuinfo;
+
+            oppointmentNumber(room, (op - 1), numberArr);
+
+            System.out.println(&quot;预约成功&quot;);
+        &#125; else &#123;
+            System.out.println(&quot;房间号输入有误，预约失败&quot;);
+        &#125;
+
+    &#125;
+
+    public static void oppointmentNumber(CustomerInfo[] room, int num, String[] 			numberArr) &#123;
+        Random r = new Random();
+        StringBuilder key = new StringBuilder();
+        for (int i = 0; i &lt; 5; i++) &#123;
+            int index = r.nextInt(10);
+            key.append(index);
+        &#125;
+        System.out.println(&quot;您的预约码为&quot; + key + &quot;房间号为&quot; + (num + 1) + &quot;号&quot;);
+        numberArr[num] = key.toString();
+    &#125;
+
+    public static boolean isOppointment(String[] numberArr, String key) &#123;
+        for (int i = 0; i &lt; numberArr.length; i++) &#123;
+            if (numberArr[i] != null) &#123;
+                if (numberArr[i].equals(key)) &#123;
+                    return true;
+                &#125;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+
+    public static int roomCode(String[] Number, String code) &#123;
+        for (int i = 0; i &lt; Number.length; i++) &#123;
+            if (Number[i] != null) &#123;
+                if (Number[i].equals(code)) &#123;
+                    return (i + 1);
+                &#125;
+            &#125;
+        &#125;
+        return -1;
+    &#125;
+
+    public static void show(CustomerInfo[] rooms) &#123;
+        for (int i = 0; i &lt; rooms.length; i++) &#123;
+            if (rooms[i] != null) &#123;
+                String name = rooms[i].getName();
+                String phoneNumber = rooms[i].getPhoneNumber();
+                String id = rooms[i].getIdCard();
+                String from = rooms[i].getLocation();
+                System.out.println(&quot;当前&quot; + (i + 1) + &quot;号房间存在客户：&quot;);
+                System.out.println(&quot;姓名:&quot; + name + &quot;\t手机号:&quot; + phoneNumber + &quot;\t身份证		号:&quot; + id + &quot;\t来源地:&quot; + from);
+            &#125; else &#123;
+                System.out.println(&quot;当前&quot; + (i + 1) + &quot;房间为空&quot;);
+            &#125;
+        &#125;
+    &#125;
+
+    public static void outRoom(CustomerInfo[] room) &#123;
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入您要退的房间&quot;);
+        int roomcode = sc.nextInt();
+        if (roomcode &gt; 0 &amp;&amp; roomcode &lt;= 9) &#123;
+            if (room[roomcode - 1] != null) &#123;
+                room[roomcode - 1] = null;
+                System.out.println(&quot;您已经成功退房:)&quot;);
+            &#125; else &#123;
+                System.out.println(&quot;您输入的房间号未有人居住或预约&quot;);
+            &#125;
+        &#125; else &#123;
+            System.out.println(&quot;您输入的房间号有错误&quot;);
+        &#125;
+
+    &#125;
+    
+&#125;
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'ec344339739a0e9dfdeb',
+            clientSecret: 'You need a client secret to authenticate as the application to the API.',
+            repo: 'https://liusr997.github.io',
+            owner: 'liusr997',
+            admin: ['liusr997'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 liusr
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
