@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>articl | Hexo</title>
+  <title>加密 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="articl | Hexo">
+  <meta name="description" content="加密 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="JDBCJAVA学了快一个月了，最近接触到了jdbc，试验一下 之前做的学生管理系统都是存储在生成控制台list集合中，重新运行后之前录入的数据也会重置，实际上数据是应该存在数据库中，所以今天用jdbc来模拟一下 程序用到了druid，导下jar包再做下配置，因为之后多个操作用到了con，用一个方法封装一下   public static Connection prop() throws Exce">
 <meta property="og:type" content="article">
@@ -273,9 +273,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-加密" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">articl</h1>
+        <h1 class="article-title">加密</h1>
     
     <div class="article-meta">
         
@@ -285,12 +285,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-11-09 13:41:48'>2022-11-08 21:10</time>
+            Created At : <time class="date" title='Updated At: 2022-11-14 13:35:27'>2022-11-14 13:32</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:93</span>
+        <span>Count:643</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -320,7 +320,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%80%E6%AE%B5%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E7%BB%99%E4%BB%96%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%BA%E7%9C%8B%E4%B8%8D%E6%87%82%E7%9A%84%E6%A0%B7%E5%AD%90"><span class="toc-text">获取一段字符串，给他转换成人看不懂的样子</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -337,50 +337,128 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p><strong>这是一段文字，用来测试</strong></p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>123456789</p>
-<p>用来测试</p>
-<p>！@#￥%……&amp;*（）—+&#x3D;-—__{}[]|?.&lt;&gt;;:”‘’~&#96;&#96;</p>
-<pre><code class="java">System.out.println(&quot;我是人啊&quot;);
-int abc;
-String abc = &quot;111&quot;;
-for(;;)&#123;
-    
-&#125;
-while(true)&#123;
-    
-&#125;
-if()&#123;
-    
-&#125;else&#123;
-    
-&#125;
+<h3 id="获取一段字符串，给他转换成人看不懂的样子"><a href="#获取一段字符串，给他转换成人看不懂的样子" class="headerlink" title="获取一段字符串，给他转换成人看不懂的样子"></a>获取一段字符串，给他转换成人看不懂的样子</h3><p>没什么逻辑，完全瞎写</p>
+<pre><code class="java">public class demo &#123;
+    public static void main(String[] args) &#123;
+        Random r = new Random();
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入原始密码&quot;);
+        String def = sc.next();;
 
-do&#123;&#125;
-String str = new String();
-class abc extends def 
-</code></pre>
-<pre><code class="c">printf(&quot;我是人啊&quot;);
-int a ;
-while()&#123;
-    
+        // 第一步，转换成ascll
+        ArrayList&lt;Integer&gt; OneStr = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; def.length(); i++) &#123;
+            char c = def.charAt(i);
+            OneStr.add((int) c);
+        &#125;
+
+
+        // 第二部，随机增加数字
+        ArrayList&lt;Integer&gt; once = once(OneStr);
+
+
+        // 生成一些字符
+        ArrayList&lt;String&gt; two = two(once);
+
+
+        //转换成字符串
+        StringBuilder sb = new StringBuilder();
+        String str3 = &quot;&quot;;
+        for (int i = 0; i &lt; once.size(); i++) &#123;
+            Integer temp = once.get(i);
+            str3 = sb.append(temp).toString();
+        &#125;
+
+        // 第三步，截取一部分乘以随机数然后重新设置
+        for (int i = 0; i &lt; OneStr.size(); i++) &#123;
+            int r1 = r.nextInt(5) + 1;
+            char c = str3.charAt(i);
+            int threeint = c * r1;
+            OneStr.set(i,threeint);
+        &#125;
+
+
+        // 将生成的所有字符拼接成字符串
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i &lt; two.size(); i++) &#123;
+            String s = two.get(i);
+            result.append(s);
+        &#125;
+        for (int i = 0; i &lt; OneStr.size(); i++) &#123;
+            Integer in = OneStr.get(i);
+            result.append(in);
+        &#125;
+        char[] words = words();
+        for (int i = 0; i &lt; OneStr.size()+3; i++) &#123;
+            int index = r.nextInt(words.length);
+            result.append(words[index]);
+        &#125;
+        String fin = result.toString();
+
+
+        // 随机打乱成最终效果
+        String[] Str = new String[fin.length()];//最终字符存储的数组
+        int[] rando = new int[fin.length()];//传递长度
+        int[] newArr1 = isexist(rando);//索引值
+
+        for (int i = 0; i &lt; newArr1.length; i++) &#123;
+            char c = fin.charAt(i);
+                Str[newArr1[i]] = String.valueOf(c);
+        &#125;
+        for (int i = 0; i &lt; Str.length; i++) &#123;
+            System.out.print(Str[i]);
+        &#125;
+
+    &#125;
+
+    public static ArrayList&lt;Integer&gt; once(ArrayList&lt;Integer&gt; OneStr) &#123;
+        Random r = new Random();
+        for (int i = 0; i &lt; OneStr.size(); i++) &#123;
+            int rNumber = r.nextInt(100) + 1;
+            OneStr.set(i,OneStr.get(i) + rNumber);
+        &#125;
+        return OneStr;
+    &#125;
+
+    public static ArrayList&lt;String&gt; two(ArrayList&lt;Integer&gt; once) &#123;
+        Random r = new Random();
+        String[] ranStr = &#123;&quot;$&quot;, &quot;*&quot;, &quot;@&quot;, &quot;!&quot;, &quot;&amp;&quot;, &quot;%&quot;, &quot;^&quot;, &quot;]&quot;,&quot;&#123;&quot;,&quot;?&quot;, &quot;_&quot;,&quot;！&quot;, &quot;;&quot;, &quot;*&quot;, &quot;……&quot;, &quot;-&quot;, &quot;@&quot;, &quot;￥&quot;, &quot;|&quot;, &quot;#&quot;&#125;;
+        ArrayList&lt;String&gt; two = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; once.size()*2; i++) &#123;
+            int index = r.nextInt(ranStr.length);
+            two.add(ranStr[index]);
+        &#125;
+        return two;
+    &#125;
+
+    public static char[] words()&#123;
+        char[] arr = new char[52];
+        for (int i = 0; i &lt; arr.length; i++) &#123;
+            if(i&gt;=0 &amp;&amp; i&lt;26)&#123;
+                arr[i] = (char)(65+i);
+            &#125;else if(i&gt;=26 &amp;&amp; i&lt;52)&#123;
+                arr[i] = (char)(97+i-26);
+            &#125;
+        &#125;
+        return arr;
+    &#125;
+
+    public static int[] isexist(int[] ran) &#123;
+        Random r = new Random();
+        ran[0] = r.nextInt(ran.length);
+        for (int i = 1; i &lt; ran.length; i++) &#123;
+            int index = r.nextInt(ran.length);
+            for (int k = 0; k &lt; i; k++) &#123;
+                while (ran[k] == index) &#123;
+                    index = r.nextInt(ran.length);
+                    k = 0;
+                &#125;
+            &#125;
+            ran[i] += index;
+        &#125;
+        return ran;
+    &#125;
 &#125;
-</code></pre>
-<pre><code class="javascript">var abc ;
-class abc;
-document.querslector();
-@click
-data:aa
 </code></pre>
 
       
